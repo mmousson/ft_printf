@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 10:02:11 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/24 09:14:49 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/24 10:16:00 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 int	main(void)
 {
-	ft_printf("ret = %d\n", ft_printf("%+04d", 42));
-	printf("ret = %d\n", printf("%+04d", 42));
+	ft_printf("ret = %d\n", ft_printf("%d %d %i%li %d", 45, 28, 96, LONG_MAX, 208345678));
+	printf("ret = %d\n", printf("%d %d %i%li %d", 45, 28, 96, LONG_MAX, 208345678));
 	// ft_printf("ret = %d\n", ft_printf("%lld", LLONG_MAX));
 	// printf("ret = %d\n", printf("%lld", LLONG_MAX));
 	// ft_printf("ret = %d\n", ft_printf("%lld", LLONG_MIN));

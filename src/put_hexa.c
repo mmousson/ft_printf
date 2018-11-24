@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 20:41:16 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/23 20:30:35 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/24 10:05:36 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int ft_pf_put_lhexa(va_list ap, t_pf_infos *inf)
 	while (bkp /= 16)
 		mag++;
 	res = mag;
-	res += ft_pf_format_output(inf, mag);
+	res += ft_pf_format_output(inf, mag, 0);
 	ft_pf_put_hexa_aux((unsigned long long int)nb, inf);
 	return (res);
 }
@@ -43,7 +43,7 @@ int ft_pf_put_lhexa_l(va_list ap, t_pf_infos *inf)
 	while (bkp /= 16)
 		mag++;
 	res = mag;
-	res += ft_pf_format_output(inf, mag);
+	res += ft_pf_format_output(inf, mag, 0);
 	ft_pf_put_hexa_aux((unsigned long long int)nb, inf);
 	return (res);
 }
@@ -61,7 +61,7 @@ int ft_pf_put_lhexa_ll(va_list ap, t_pf_infos *inf)
 	while (bkp /= 16)
 		mag++;
 	res = mag;
-	res += ft_pf_format_output(inf, mag);
+	res += ft_pf_format_output(inf, mag, 0);
 	ft_pf_put_hexa_aux(nb, inf);
 	return (res);
 }
@@ -79,7 +79,7 @@ int ft_pf_put_lhexa_s(va_list ap, t_pf_infos *inf)
 	while (bkp /= 16)
 		mag++;
 	res = mag;
-	res += ft_pf_format_output(inf, mag);
+	res += ft_pf_format_output(inf, mag, 0);
 	ft_pf_put_hexa_aux((unsigned long long)nb, inf);
 	return (res);
 }
@@ -97,7 +97,7 @@ int ft_pf_put_lhexa_c(va_list ap, t_pf_infos *inf)
 	while (bkp /= 16)
 		mag++;
 	res = mag;
-	res += ft_pf_format_output(inf, mag);
+	res += ft_pf_format_output(inf, mag, 0);
 	ft_pf_put_hexa_aux((unsigned long long)nb, inf);
 	return (res);
 }

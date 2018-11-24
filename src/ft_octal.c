@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 22:15:21 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/23 20:30:04 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/24 10:06:06 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		ft_pf_putoctal_ui(va_list ap, t_pf_infos *inf)
 	while (bkp /= 8)
 		mag++;
 	res = mag;
-	res += ft_pf_format_output(inf, mag);
+	res += ft_pf_format_output(inf, mag, 0);
 	ft_pf_putoctal_ulli_aux((unsigned long long)nb);
 	return (res);
 }
@@ -43,7 +43,7 @@ int		ft_pf_putoctal_uli(va_list ap, t_pf_infos *inf)
 	while (bkp /= 8)
 		mag++;
 	res = mag;
-	res += ft_pf_format_output(inf, mag);
+	res += ft_pf_format_output(inf, mag, 0);
 	ft_pf_putoctal_ulli_aux((unsigned long long)nb);
 	return (res);
 }
@@ -61,7 +61,7 @@ int		ft_pf_putoctal_ulli(va_list ap, t_pf_infos *inf)
 	while (bkp /= 8)
 		mag++;
 	res = mag;
-	res += ft_pf_format_output(inf, mag);
+	res += ft_pf_format_output(inf, mag, 0);
 	ft_pf_putoctal_ulli_aux(nb);
 	return (res);
 }
@@ -79,7 +79,7 @@ int		ft_pf_putoctal_usi(va_list ap, t_pf_infos *inf)
 	while (bkp /= 8)
 		mag++;
 	res = mag;
-	res += ft_pf_format_output(inf, mag);
+	res += ft_pf_format_output(inf, mag, 0);
 	ft_pf_putoctal_ulli_aux((unsigned long long)nb);
 	return (res);
 }
@@ -97,7 +97,7 @@ int		ft_pf_putoctal_uci(va_list ap, t_pf_infos *inf)
 	while (bkp /= 8)
 		mag++;
 	res = mag;
-	res += ft_pf_format_output(inf, mag);
+	res += ft_pf_format_output(inf, mag, 0);
 	ft_pf_putoctal_ulli_aux((unsigned long long)nb);
 	return (res);
 }

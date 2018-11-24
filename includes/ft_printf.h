@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 19:58:32 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/24 00:07:16 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/24 10:04:33 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ typedef struct	s_pf_infos
 	
 }				t_pf_infos;
 
-int			ft_pf_format_output(t_pf_infos *inf, int size_of_var);
+int			ft_ending_format(t_pf_infos *inf, int size_of_var, int is_neg);
+int			ft_pf_format_output(t_pf_infos *inf, int size_of_var, int is_neg);
 
 /*
 ** =====================  CHAR FORMATING  ====================

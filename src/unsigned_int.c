@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 19:46:31 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/22 09:51:11 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/24 10:05:08 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_pf_putuint(va_list ap, t_pf_infos *inf)
 	while (bkp /= 10)
 		mag++;
 	res = mag;
-	res += ft_pf_format_output(inf, mag);
+	res += ft_pf_format_output(inf, mag, 0);
 	ft_pf_putullint_aux((unsigned long long int)nb);
 	return (res);
 }
@@ -43,7 +43,7 @@ int	ft_pf_putulint(va_list ap, t_pf_infos *inf)
 	while (bkp /= 10)
 		mag++;
 	res = mag;
-	res += ft_pf_format_output(inf, mag);
+	res += ft_pf_format_output(inf, mag, 0);
 	ft_pf_putullint_aux((unsigned long long int)nb);
 	return (res);
 }
@@ -61,7 +61,7 @@ int	ft_pf_putullint(va_list ap, t_pf_infos *inf)
 	while (bkp /= 10)
 		mag++;
 	res = mag;
-	res += ft_pf_format_output(inf, mag);
+	res += ft_pf_format_output(inf, mag, 0);
 	ft_pf_putullint_aux(nb);
 	return (res);
 }
@@ -79,7 +79,7 @@ int	ft_pf_putusint(va_list ap, t_pf_infos *inf)
 	while (bkp /= 10)
 		mag++;
 	res = mag;
-	res += ft_pf_format_output(inf, mag);
+	res += ft_pf_format_output(inf, mag, 0);
 	ft_pf_putullint_aux((unsigned long long)nb);
 	return (res);
 }
@@ -97,7 +97,7 @@ int	ft_pf_putucint(va_list ap, t_pf_infos *inf)
 	while (bkp /= 10)
 		mag++;
 	res = mag;
-	res += ft_pf_format_output(inf, mag);
+	res += ft_pf_format_output(inf, mag, 0);
 	ft_pf_putullint_aux((unsigned long long)nb);
 	return (res);
 }
