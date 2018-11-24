@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 22:15:21 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/24 10:06:06 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/24 10:33:15 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		ft_pf_putoctal_ui(va_list ap, t_pf_infos *inf)
 	unsigned int	bkp;
 
 	nb = va_arg(ap, unsigned int);
-	mag = (nb > 0) ? 1 : 0;
+	mag = (nb != 0 || inf->precision == -1);
 	bkp = nb;
 	while (bkp /= 8)
 		mag++;
@@ -38,7 +38,7 @@ int		ft_pf_putoctal_uli(va_list ap, t_pf_infos *inf)
 	unsigned long int	bkp;
 
 	nb = va_arg(ap, unsigned long int);
-	mag = (nb > 0) ? 1 : 0;
+	mag = (nb != 0 || inf->precision == -1);
 	bkp = nb;
 	while (bkp /= 8)
 		mag++;
@@ -56,7 +56,7 @@ int		ft_pf_putoctal_ulli(va_list ap, t_pf_infos *inf)
 	unsigned long long int	bkp;
 
 	nb = va_arg(ap, unsigned long long int);
-	mag = (nb > 0) ? 1 : 0;
+	mag = (nb != 0 || inf->precision == -1);
 	bkp = nb;
 	while (bkp /= 8)
 		mag++;
@@ -74,7 +74,7 @@ int		ft_pf_putoctal_usi(va_list ap, t_pf_infos *inf)
 	unsigned short int	bkp;
 
 	nb = (unsigned short int)(va_arg(ap, int));
-	mag = (nb > 0) ? 1 : 0;
+	mag = (nb != 0 || inf->precision == -1);
 	bkp = nb;
 	while (bkp /= 8)
 		mag++;
@@ -92,7 +92,7 @@ int		ft_pf_putoctal_uci(va_list ap, t_pf_infos *inf)
 	unsigned char	bkp;
 
 	nb = (unsigned char)va_arg(ap, int);
-	mag = (nb > 0) ? 1 : 0;
+	mag = (nb != 0 || inf->precision == -1);
 	bkp = nb;
 	while (bkp /= 8)
 		mag++;
