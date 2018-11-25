@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 19:58:32 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/24 10:04:33 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/25 16:58:08 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ int			ft_pf_dispatcher(const char **str, va_list args);
 int			ft_flag_offset(char c, int current_offset);
 int			ft_pf_c_in_str(char c, char *str);
 int			ft_is_conversion_or_flag(char c);
+void		ft_pf_parse_attributes(t_pf_infos *inf);
 void		ft_pf_get_attributes(t_pf_infos *inf, const char *str);
 t_pf_infos	*ft_pf_initiate_attributes(void);
 

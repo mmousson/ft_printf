@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 03:28:09 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/25 16:37:48 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/25 17:41:53 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,15 +75,16 @@ int			ft_pf_format_output(t_pf_infos *inf, int size_of_var, int is_neg)
 		if (inf->width > 0 && inf->sharp == 1 && (inf->width < size_of_var))
 			res += ft_format_sharp(inf, size_of_var);
 		if (inf->zero_pad == 1 && inf->justify == -1)
-			while (((inf->width)-- - size_of_var - (inf->plus == 1 || is_neg || inf->sharp == 1) * (1 + ((inf->is_x == 1) || (inf->is_b_x == 1)) && size_of_var)) > (inf->sharp != -1) ? 1 : 0)
+			while (((inf->width)-- - size_of_var - (inf->plus == 1 || is_neg) * (1 + ((inf->is_x == 1) || (inf->is_b_x == 1)) && size_of_var)) > (inf->sharp != -1) ? 1 : 0)
 				res += (int)write(1, inf->precision == 0 ? " " : "0", 1);
 		else if (inf->justify == -1)
 		{
 			inf->justify = inf->width;
-			while (((inf->width)-- - size_of_var - (inf->plus > 0)) > (inf->sharp != -1) ? 1 : 0)
+			while (((inf->width)-- - size_of_var - (inf->plus > 0)) > ((inf->sharp != -1) ? 1 + (inf->is_x == 1 || inf->is_b_x == 1) : 0))
 				res += (int)write(1, " ", 1);
-			if (inf->plus && (size_of_var < inf->justify))
+			if (inf->plus == 1 && (size_of_var < inf->justify))
 				res += (int)write(1, "+", 1);
+			inf->justify = -1;
 		}
 		if (inf->width > 0 && inf->sharp == 1)
 			res += ft_format_sharp(inf, size_of_var);

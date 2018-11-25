@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 20:02:26 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/24 08:52:03 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/25 16:58:25 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,7 @@ int	ft_pf_dispatcher(const char **str, va_list args)
 		s++;
 	}
 	inf->conversion = *(s - 1);
+	ft_pf_parse_attributes(inf);
 	ret = ((ret <= 49 && (*g_func[ret])) ? (*g_func[ret])(args, inf) : 0);
 	free(inf);
 	*str = s;
