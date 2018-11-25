@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 01:04:16 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/24 00:08:27 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/24 15:37:39 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,8 @@ static char						*ft_calculate_mantissa(unsigned long long int
 
 static char						*ft_calculate_exp(int exp_data)
 {
-	short	i;
 	char	*exponent;
 
-	i = 0;
 	if (exp_data == 16383)
 		return (ft_strdup("1"));
 	exponent = ft_strdup((exp_data - 16383 > 0) ? "2" : "5");

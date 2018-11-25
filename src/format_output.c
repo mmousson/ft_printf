@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 03:28:09 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/24 11:09:10 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/25 16:37:48 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static int	ft_format_sharp(t_pf_infos *inf, int size_of_var)
 	int res;
 
 	res = 0;
+	inf->sharp = -1;
 	if (inf->is_x == 1 && size_of_var)
 		res = (int)write(1, "0x", 2);
 	else if (inf->is_b_x == 1 && size_of_var)
@@ -47,7 +48,7 @@ int			ft_ending_format(t_pf_infos *inf, int size_of_var, int is_neg)
 	int res;
 
 	res = 0;
-	if (inf->justify)
+	if (inf->justify > 0)
 	{
 		while (((inf->width)-- - size_of_var - (inf->plus == 1) - is_neg) > 0)
 				res += (int)write(1, " ", 1);
@@ -71,19 +72,21 @@ int			ft_pf_format_output(t_pf_infos *inf, int size_of_var, int is_neg)
 		res += (int)write(1, " ", 1);
 	else if (inf->width > -1)
 	{
+		if (inf->width > 0 && inf->sharp == 1 && (inf->width < size_of_var))
+			res += ft_format_sharp(inf, size_of_var);
 		if (inf->zero_pad == 1 && inf->justify == -1)
-			while (((inf->width)-- - size_of_var - (inf->plus == 1 || is_neg || inf->sharp == 1)) > 0)
+			while (((inf->width)-- - size_of_var - (inf->plus == 1 || is_neg || inf->sharp == 1) * (1 + ((inf->is_x == 1) || (inf->is_b_x == 1)) && size_of_var)) > (inf->sharp != -1) ? 1 : 0)
 				res += (int)write(1, inf->precision == 0 ? " " : "0", 1);
 		else if (inf->justify == -1)
 		{
 			inf->justify = inf->width;
-			while (((inf->width)-- - size_of_var - (inf->plus)) > (inf->sharp != -1) ? 1 : 0)
+			while (((inf->width)-- - size_of_var - (inf->plus > 0)) > (inf->sharp != -1) ? 1 : 0)
 				res += (int)write(1, " ", 1);
 			if (inf->plus && (size_of_var < inf->justify))
 				res += (int)write(1, "+", 1);
 		}
 		if (inf->width > 0 && inf->sharp == 1)
-			res += (int)write(1, "0", 1);
+			res += ft_format_sharp(inf, size_of_var);
 	}
 	else if (inf->sharp == 1)
 		res += ft_format_sharp(inf, size_of_var);

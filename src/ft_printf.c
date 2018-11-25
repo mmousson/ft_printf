@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/17 14:16:23 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/24 08:51:36 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/24 15:36:13 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int			ft_printf(const char *format, ...)
 		}
 		f = ft_strchr(format, '%');
 		ret += ft_pf_putstr_aux(ft_strsub(format, 0, f ? f - format
-					: ft_strlen(format)), &format);
+					: (int)ft_strlen(format)), &format);
 	}
 	va_end(list);
 	return (ret);

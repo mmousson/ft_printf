@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 01:25:57 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/23 23:56:36 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/25 16:35:51 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ t_pf_infos	*ft_pf_initiate_attributes(void)
 	ret->width = -1;
 	ret->zero_pad = -1;
 	ret->is_x = -1;
+	ret->is_b_x = -1;
 	return (ret);
 }
 
