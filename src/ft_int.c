@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 06:49:35 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/24 10:32:57 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/26 20:27:32 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int		ft_pf_putint(va_list ap, t_pf_infos *inf)
 
 	inf->bkp = inf->precision;
 	nb = va_arg(ap, int);
-	mag = (nb != 0 || inf->precision == -1);
+	mag = (nb != 0 || (inf->precision == -1 && inf->width == -1));
+	mag = (mag == 0 ? (inf->bkp > 0 || inf->width > 0) : mag);
 	bkp = nb;
 	inf->plus = (nb < 0) ? -1 : inf->plus;
 	while (bkp /= 10)
@@ -45,7 +46,8 @@ int		ft_pf_putlint(va_list ap, t_pf_infos *inf)
 
 	inf->bkp = inf->precision;
 	nb = va_arg(ap, long int);
-	mag = (nb != 0 || inf->precision == -1);
+	mag = (nb != 0 || (inf->precision == -1 && inf->width == -1));
+	mag = (mag == 0 ? (inf->bkp > 0 || inf->width > 0) : mag);
 	bkp = nb;
 	inf->plus = (nb < 0) ? -1 : inf->plus;
 	while (bkp /= 10)
@@ -68,7 +70,8 @@ int		ft_pf_putllint(va_list ap, t_pf_infos *inf)
 
 	inf->bkp = inf->precision;
 	nb = va_arg(ap, long long int);
-	mag = (nb != 0 || inf->precision == -1);
+	mag = (nb != 0 || (inf->precision == -1 && inf->width == -1));
+	mag = (mag == 0 ? (inf->bkp > 0 || inf->width > 0) : mag);
 	bkp = nb;
 	inf->plus = (nb < 0) ? -1 : inf->plus;
 	while (bkp /= 10)
@@ -91,7 +94,8 @@ int		ft_pf_putsint(va_list ap, t_pf_infos *inf)
 
 	inf->bkp = inf->precision;
 	nb = (short int)(va_arg(ap, int));
-	mag = (nb != 0 || inf->precision == -1);
+	mag = (nb != 0 || (inf->precision == -1 && inf->width == -1));
+	mag = (mag == 0 ? (inf->bkp > 0 || inf->width > 0) : mag);
 	bkp = nb;
 	inf->plus = (nb < 0) ? -1 : inf->plus;
 	while (bkp /= 10)
@@ -114,7 +118,8 @@ int		ft_pf_putcint(va_list ap, t_pf_infos *inf)
 
 	inf->bkp = inf->precision;
 	nb = (char)va_arg(ap, int);
-	mag = (nb != 0 || inf->precision == -1);
+	mag = (nb != 0 || (inf->precision == -1 && inf->width == -1));
+	mag = (mag == 0 ? (inf->bkp > 0 || inf->width > 0) : mag);
 	bkp = nb;
 	inf->plus = (nb < 0) ? -1 : inf->plus;
 	while (bkp /= 10)

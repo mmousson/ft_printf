@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 10:02:11 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/26 20:23:49 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/26 20:31:31 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,8 +127,8 @@ int	main(void)
 
 	ft_printf("ret = %d\n", ft_printf("%o %o %lo", 45, 28, 96));
 	printf("ret = %d\n", printf("%o %o %lo", 45, 28, 96));
-	ft_printf("ret = %d\n", ft_printf("%#0#4lo", 0));
-	printf("ret = %d\n", printf("%#0#4lo", 0));
+	ft_printf("ret = %d\n", ft_printf("%#0#4lo", (unsigned long)0));
+	printf("ret = %d\n", printf("%#0#4lo", (unsigned long)0));
 	ft_printf("ret = %d\n", ft_printf("%.5o", 4826));
 	printf("ret = %d\n", printf("%.5o", 4826));
 	ft_printf("ret = %d\n", ft_printf("%#04096o", 1337));

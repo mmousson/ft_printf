@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 22:15:21 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/26 19:42:53 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/26 20:31:17 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,13 @@ int		ft_pf_putoctal_ui(va_list ap, t_pf_infos *inf)
 	inf->bkp = inf->precision;
 	nb = va_arg(ap, unsigned int);
 	mag = (nb != 0 || (inf->precision == -1 && inf->width == -1));
+	mag = (mag == 0 ? (inf->bkp > 0 || inf->width > 0) : mag);
 	bkp = nb;
 	while (bkp /= 8)
 		mag++;
 	res = mag;
 	res += ft_pf_format_output(inf, mag, 0);
-	if (!(nb == 0 && (inf->bkp > 0 || inf->width > 0)))
+	if ((inf->bkp == 0 && nb != 0) || (inf->bkp != 0))
 		ft_pf_putoctal_ulli_aux((unsigned long long)nb);
 	res += ft_ending_format(inf, mag, 0);
 	return (res);
@@ -44,12 +45,13 @@ int		ft_pf_putoctal_uli(va_list ap, t_pf_infos *inf)
 	inf->bkp = inf->precision;
 	nb = va_arg(ap, unsigned long int);
 	mag = (nb != 0 || (inf->precision == -1 && inf->width == -1));
+	mag = (mag == 0 ? (inf->bkp > 0 || inf->width > 0) : mag);
 	bkp = nb;
 	while (bkp /= 8)
 		mag++;
 	res = mag;
 	res += ft_pf_format_output(inf, mag, 0);
-	if (!(nb == 0 && (inf->bkp > 0 || inf->width > 0)))
+	if ((inf->bkp == 0 && nb != 0) || (inf->bkp != 0))
 		ft_pf_putoctal_ulli_aux((unsigned long long)nb);
 	res += ft_ending_format(inf, mag, 0);
 	return (res);
@@ -65,12 +67,13 @@ int		ft_pf_putoctal_ulli(va_list ap, t_pf_infos *inf)
 	inf->bkp = inf->precision;
 	nb = va_arg(ap, unsigned long long int);
 	mag = (nb != 0 || (inf->precision == -1 && inf->width == -1));
+	mag = (mag == 0 ? (inf->bkp > 0 || inf->width > 0) : mag);
 	bkp = nb;
 	while (bkp /= 8)
 		mag++;
 	res = mag;
 	res += ft_pf_format_output(inf, mag, 0);
-	if (!(nb == 0 && (inf->bkp > 0 || inf->width > 0)))
+	if ((inf->bkp == 0 && nb != 0) || (inf->bkp != 0))
 		ft_pf_putoctal_ulli_aux(nb);
 	res += ft_ending_format(inf, mag, 0);
 	return (res);
@@ -86,12 +89,13 @@ int		ft_pf_putoctal_usi(va_list ap, t_pf_infos *inf)
 	inf->bkp = inf->precision;
 	nb = (unsigned short)va_arg(ap, int);
 	mag = (nb != 0 || (inf->precision == -1 && inf->width == -1));
+	mag = (mag == 0 ? (inf->bkp > 0 || inf->width > 0) : mag);
 	bkp = nb;
 	while (bkp /= 8)
 		mag++;
 	res = mag;
 	res += ft_pf_format_output(inf, mag, 0);
-	if (!(nb == 0 && (inf->bkp > 0 || inf->width > 0)))
+	if ((inf->bkp == 0 && nb != 0) || (inf->bkp != 0))
 		ft_pf_putoctal_ulli_aux((unsigned long long)nb);
 	res += ft_ending_format(inf, mag, 0);
 	return (res);
@@ -107,12 +111,13 @@ int		ft_pf_putoctal_uci(va_list ap, t_pf_infos *inf)
 	inf->bkp = inf->precision;
 	nb = (unsigned char)va_arg(ap, int);
 	mag = (nb != 0 || (inf->precision == -1 && inf->width == -1));
+	mag = (mag == 0 ? (inf->bkp > 0 || inf->width > 0) : mag);
 	bkp = nb;
 	while (bkp /= 8)
 		mag++;
 	res = mag;
 	res += ft_pf_format_output(inf, mag, 0);
-	if (!(nb == 0 && (inf->bkp > 0 || inf->width > 0)))
+	if ((inf->bkp == 0 && nb != 0) || (inf->bkp != 0))
 		ft_pf_putoctal_ulli_aux((unsigned long long)nb);
 	res += ft_ending_format(inf, mag, 0);
 	return (res);
