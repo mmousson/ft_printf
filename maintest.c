@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 10:02:11 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/26 20:31:31 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/27 00:03:48 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,35 @@
 
 int	main(void)
 {
+	ft_printf("ret = %d\n", ft_printf("%p %5p %.2p %.15p %.15p", 5, 4896548, 15694, 0, -1));
+	printf("ret = %d\n", printf("%p %5p %.2p %.15p %.15p", 5, 4896548, 15694, 0, -1));
+	ft_printf("ret = %d\n", ft_printf("%48p", 587));
+	printf("ret = %d\n", printf("%48p", 587));
+	ft_printf("ret = %d\n", ft_printf("%4p", 0));
+	printf("ret = %d\n", printf("%4p", 0));
+	ft_printf("ret = %d\n", ft_printf("%-8p", 42));
+	printf("ret = %d\n", printf("%-8p", 42));
+	ft_printf("ret = %d\n", ft_printf("%--.5p", 42));
+	printf("ret = %d\n", printf("%--.5p", 42));
+	ft_printf("ret = %d\n", ft_printf("%9.0p", 482));
+	printf("ret = %d\n", printf("%9.0p", 482));
+	ft_printf("ret = %d\n", ft_printf("%.5p", 32));
+	printf("ret = %d\n", printf("%.5p", 32));
+	ft_printf("ret = %d\n", ft_printf("%.5p", 0));
+	printf("ret = %d\n", printf("%.5p", 0));
+	ft_printf("ret = %d\n", ft_printf("%p", 58));
+	printf("ret = %d\n", printf("%p", 58));
+	ft_printf("ret = %d\n", ft_printf("%p", -1));
+	printf("ret = %d\n", printf("%p", -1));
+	ft_printf("ret = %d\n", ft_printf("%p", LONG_MAX + 5));
+	printf("ret = %d\n", printf("%p", LONG_MAX + 5));
+	ft_printf("ret = %d\n", ft_printf("%p", LONG_MAX));
+	printf("ret = %d\n", printf("%p", LONG_MAX));
+	ft_printf("ret = %d\n", ft_printf("%p", -42));
+	printf("ret = %d\n", printf("%p", -42));
+	ft_printf("ret = %d\n", ft_printf("%p", 0));
+	printf("ret = %d\n", printf("%p", 0));
+
 	ft_printf("ret = %d\n", ft_printf("%5u%5u %.0u %.5u %05u", 4, 50, 0, LONG_MAX, 0));
 	printf("ret = %d\n", printf("%5u%5u %.0u %.5u %05u", 4, 50, 0, LONG_MAX, 0));
 	ft_printf("ret = %d\n", ft_printf("%040u", 0));
