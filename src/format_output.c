@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 03:28:09 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/25 17:41:53 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/27 02:30:03 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,20 @@ static int	ft_format_sharp(t_pf_infos *inf, int size_of_var)
 	return (res);
 }
 
-void		ft_print_attributes(t_pf_infos *inf)
-{
-	printf("space = %d\n", inf->space);
-	printf("sharp = %d\n", inf->sharp);
-	printf("zero pad = %d\n", inf->zero_pad);
-	printf("justify = %d\n", inf->justify);
-	printf("plus = %d\n", inf->plus);
-	printf("conversion = %c\n", inf->conversion);
-	printf("is_x = %d\n", inf->is_x);
-	printf("is_b_x = %d\n", inf->is_b_x);
-	printf("width = %d\n", inf->width);
-	printf("precision = %d\n", inf->precision);
-	printf("bkp = %d\n", inf->bkp);
-}
+// void		ft_print_attributes(t_pf_infos *inf)
+// {
+// 	printf("space = %d\n", inf->space);
+// 	printf("sharp = %d\n", inf->sharp);
+// 	printf("zero pad = %d\n", inf->zero_pad);
+// 	printf("justify = %d\n", inf->justify);
+// 	printf("plus = %d\n", inf->plus);
+// 	printf("conversion = %c\n", inf->conversion);
+// 	printf("is_x = %d\n", inf->is_x);
+// 	printf("is_b_x = %d\n", inf->is_b_x);
+// 	printf("width = %d\n", inf->width);
+// 	printf("precision = %d\n", inf->precision);
+// 	printf("bkp = %d\n", inf->bkp);
+// }
 
 int			ft_ending_format(t_pf_infos *inf, int size_of_var, int is_neg)
 {
@@ -80,8 +80,8 @@ int			ft_pf_format_output(t_pf_infos *inf, int size_of_var, int is_neg)
 		else if (inf->justify == -1)
 		{
 			inf->justify = inf->width;
-			while (((inf->width)-- - size_of_var - (inf->plus > 0)) > ((inf->sharp != -1) ? 1 + (inf->is_x == 1 || inf->is_b_x == 1) : 0))
-				res += (int)write(1, " ", 1);
+			while (((inf->width)-- - size_of_var - (inf->plus > 0)) - is_neg > ((inf->sharp != -1) ? 1 + (inf->is_x == 1 || inf->is_b_x == 1) : 0))
+				res += (int)write(1, inf->precision + size_of_var >= inf->width ? "0" : " ", 1);
 			if (inf->plus == 1 && (size_of_var < inf->justify))
 				res += (int)write(1, "+", 1);
 			inf->justify = -1;

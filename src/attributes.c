@@ -6,10 +6,11 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 01:25:57 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/25 17:21:53 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/27 04:44:07 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "ft_printf.h"
 
 t_pf_infos	*ft_pf_initiate_attributes(void)
@@ -36,9 +37,15 @@ void		ft_pf_parse_attributes(t_pf_infos *inf)
 	{
 		if (inf->precision > -1 && ft_pf_c_in_str(inf->conversion, "_diouxX"))
 			inf->zero_pad = -1;
+		if (inf->justify == 1)
+			inf->zero_pad = -1;
 	}
 	if (inf->precision == -1)
 		inf->precision = inf->conversion == 'f' ? 6 : -1;
+	if (inf->plus == 1 && !ft_pf_c_in_str(inf->conversion, "_di"))
+		inf->plus = -1;
+	if (inf->plus == 1 && inf->space == 1)
+		inf->space = -1;
 }
 
 void		ft_pf_get_attributes(t_pf_infos *inf, const char *str)

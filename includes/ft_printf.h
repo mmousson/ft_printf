@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 19:58:32 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/25 16:58:08 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/27 02:55:44 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int			ft_pf_putullint(va_list ap, t_pf_infos *inf);
 int			ft_pf_putusint(va_list ap, t_pf_infos *inf);
 int			ft_pf_putucint(va_list ap, t_pf_infos *inf);
 
-void		ft_pf_putllint_aux(long long int nb);
+int			ft_pf_putllint_aux(long long int nb, t_pf_infos *inf);
 void		ft_pf_putullint_aux(unsigned long long int nb);
 
 /*
@@ -128,5 +128,11 @@ int			ft_is_conversion_or_flag(char c);
 void		ft_pf_parse_attributes(t_pf_infos *inf);
 void		ft_pf_get_attributes(t_pf_infos *inf, const char *str);
 t_pf_infos	*ft_pf_initiate_attributes(void);
+
+/*
+** ==================== AUXILIARY FUNCTIONS ====================
+*/
+
+int			ft_magnitude(long long nb, int base);
 
 #endif
