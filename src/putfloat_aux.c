@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 02:04:27 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/24 00:13:11 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/27 08:17:00 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,10 @@ int			ft_pf_putfloat_show(char *result, short res_len, short man_len,
 	return (ret);
 }
 
-int			ft_float_pad(long double f, t_pf_infos *inf, int res_len, int man_len)
+int			ft_float_pad(long double f, t_pf_infos *inf, int res_len,
+				int man_len)
 {
-	int 	bkp;
+	int		bkp;
 	int		reps;
 	char	padder;
 
@@ -95,7 +96,8 @@ int			ft_float_pad(long double f, t_pf_infos *inf, int res_len, int man_len)
 	{
 		padder = (inf->zero_pad-- == 1) ? '0' : ' ';
 		if (f < 1.0L)
-			reps = (inf->width) - (inf->bkp + 2) - (inf->space == 1 && f > 0.0L);
+			reps = (inf->width) - (inf->bkp + 2)
+						- (inf->space == 1 && f > 0.0L);
 		else
 			reps = (inf->width) - (inf->bkp + (res_len - man_len)
 						+ (inf->space == 1 && f > 0.0L) + 2 + (inf->plus == 0));
@@ -107,8 +109,6 @@ int			ft_float_pad(long double f, t_pf_infos *inf, int res_len, int man_len)
 		bkp = (int)write(1, " ", 1);
 	else if (inf->plus-- == 1 && f > 0.0L)
 		bkp = (int)write(1, "+", 1);
-	// else
-		inf->justify++;
+	inf->justify++;
 	return (bkp);
 }
-

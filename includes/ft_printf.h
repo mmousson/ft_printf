@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 19:58:32 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/27 02:55:44 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/27 08:10:28 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ int			ft_pf_putoctal_uli(va_list ap, t_pf_infos *inf);
 int			ft_pf_putoctal_ulli(va_list ap, t_pf_infos *inf);
 int			ft_pf_putoctal_usi(va_list ap, t_pf_infos *inf);
 int			ft_pf_putoctal_uci(va_list ap, t_pf_infos *inf);
-void		ft_pf_putoctal_ulli_aux(unsigned long long int nb);
+int			ft_pf_putoctal_ulli_aux(unsigned long long int nb,
+				t_pf_infos *inf);
 
 /*
 ** ================== HEXADECIMAL FORMATING ===================
@@ -91,7 +92,7 @@ int 		ft_pf_put_lhexa_ll(va_list ap, t_pf_infos *inf);
 int 		ft_pf_put_lhexa_s(va_list ap, t_pf_infos *inf);
 int 		ft_pf_put_lhexa_c(va_list ap, t_pf_infos *inf);
 
-void		ft_pf_put_hexa_aux(unsigned long long int nb, t_pf_infos *inf);
+int			ft_pf_put_hexa_aux(unsigned long long int nb, t_pf_infos *inf);
 
 /*
 ** ================= FLOATING POINT FORMATTING ===============
@@ -124,8 +125,8 @@ int			ft_put_pointer(va_list ap, t_pf_infos *inf);
 int			ft_pf_dispatcher(const char **str, va_list args);
 int			ft_flag_offset(char c, int current_offset);
 int			ft_pf_c_in_str(char c, char *str);
-int			ft_is_conversion_or_flag(char c);
-void		ft_pf_parse_attributes(t_pf_infos *inf);
+int			ft_conversion_or_flag(char c);
+void		ft_pf_parse_attributes(t_pf_infos *inf, char conv);
 void		ft_pf_get_attributes(t_pf_infos *inf, const char *str);
 t_pf_infos	*ft_pf_initiate_attributes(void);
 
@@ -133,6 +134,7 @@ t_pf_infos	*ft_pf_initiate_attributes(void);
 ** ==================== AUXILIARY FUNCTIONS ====================
 */
 
-int			ft_magnitude(long long nb, int base);
+int			ft_magnitude(long long int nb, int base);
+int			ft_unsigned_magnitude(unsigned long long int nb, int base);
 
 #endif

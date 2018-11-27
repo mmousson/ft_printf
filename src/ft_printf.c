@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/17 14:16:23 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/24 15:36:13 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/27 08:13:37 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,22 +51,3 @@ int			ft_printf(const char *format, ...)
 	va_end(list);
 	return (ret);
 }
-
-// int			main(void)
-// {
-// 	int res;
-
-// 	res = ft_printf("%c || %#.12d || %f || %hhi || %.12lo || %p || %s || %+hu || %+#hhX || %lx\n",
-// 			(char)42,
-// 			123456,
-// 			0.0f,
-// 			(char)21,
-// 			1024UL,
-// 			&ft_printf,
-// 			"Wololo",
-// 			(unsigned short)90,
-// 			(unsigned char)42,
-// 			424242424242LU);
-// 	ft_printf("Characters written = %d\n", res);
-// 	return (0);
-// }

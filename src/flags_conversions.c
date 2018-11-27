@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 01:22:11 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/23 20:27:11 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/27 08:10:17 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_pf_c_in_str(char c, char *str)
 	return (0);
 }
 
-int	ft_is_conversion_or_flag(char c)
+int	ft_conversion_or_flag(char c)
 {
 	return (c == 'f' || c == 'd' || c == 'i' || c == 'o' || c == 'u'
 				|| c == 'x' || c == 'X' || c == 'h' || c == 'l' || c == 'L'

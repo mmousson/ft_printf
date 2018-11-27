@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 19:39:25 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/27 01:28:04 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/27 06:56:18 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int			ft_pf_putstr(va_list ap, t_pf_infos *inf)
 
 	size = 0;
 	str = va_arg(ap, const char *);
+	if (str == NULL)
+		return ((int)write(1, "(null)", 6));
 	len = ft_strlen(str);
 	len = inf->precision > -1 ? ft_min(inf->precision, len) : len;
 	size += ft_format(inf, len);

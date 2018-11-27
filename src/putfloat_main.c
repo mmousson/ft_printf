@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 08:28:11 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/23 20:54:47 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/27 08:19:40 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	ft_pf_is_greater_than_zero(char *str)
 {
 	int i;
-	
+
 	i = -1;
 	while (str[++i])
 		if (str[i] != '0')
