@@ -6,10 +6,11 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 20:02:26 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/27 08:12:56 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/28 21:28:25 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "ft_printf.h"
 
 int	(*g_func[50])(va_list ap, t_pf_infos *inf) = {
@@ -90,18 +91,18 @@ int	ft_pf_dispatcher(const char **str, va_list args)
 	r = 0;
 	s = (*str);
 	if (!(inf = ft_pf_initiate_attributes()))
-		return (-1);
+		return (0);
 	while (ft_isdigit(*++s) || *s == '#' || *s == '+' || *s == '-'
 				|| *s == '.' || *s == ' ')
 		ft_pf_get_attributes(inf, s);
-	while (ft_conversion_or_flag(*s))
+	while (ft_conversion_or_flag(*s) && r % 10 == 0)
 	{
 		inf->is_x = (*s == 'x') ? 1 : inf->is_x;
 		inf->is_b_x = (*s == 'X') ? 1 : inf->is_b_x;
 		r += ft_flag_offset(*s, r) + ft_pf_c_in_str(*s, "cdfiopsuxX");
 		s++;
 	}
-	if ((r = (*s == '%' && !ft_conversion_or_flag(*(s + 1))) ? 100 : r) == 100)
+	if ((r = (**str == '%' && !ft_conversion_or_flag(*(*(str) + 1))) ? 100 : r) == 100)
 		s++;
 	ft_pf_parse_attributes(inf, *(s - 1));
 	r = ((r <= 49 && (*g_func[r])) ? (*g_func[r])(args, inf) : invalid(inf));

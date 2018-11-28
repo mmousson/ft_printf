@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 10:02:11 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/27 07:47:08 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/28 21:29:03 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,23 @@
 
 int	main(void)
 {
-	ft_printf("ret = %d\n", ft_printf("%-5%"));
-	printf("ret = %d\n", printf("%-5%"));
-	ft_printf("ret = %d\n", ft_printf("%5%"));
-	printf("ret = %d\n", printf("%5%"));
-	ft_printf("ret = %d\n", ft_printf("%.0%"));
-	printf("ret = %d\n", printf("%.0%"));
+	char c = '7';
+	// ft_printf("ret = %d\n", ft_printf("111%s333%s555%saaa%sccc", "222", "444", "666", "bbb"));
+	// printf("ret = %d\n", printf("111%s333%s555%saaa%sccc", "222", "444", "666", "bbb"));
+	ft_printf("ret = %d\n", ft_printf("%p%%%i%o%u%x%X%c", &c, LONG_MAX, 42, 42, 100000, 42, 'c'));
+	printf("ret = %d\n", printf("%p%%%i%o%u%x%X%c", &c, LONG_MAX, 42, 42, 100000, 42, 'c'));
+	// ft_printf("ret = %d\n", ft_printf("{% 03d}", 0));
+	// printf("ret = %d\n", printf("{% 03d}", 0));
+	// ft_printf("ret = %d\n", ft_printf("% +Zoo"));
+	// printf("ret = %d\n", printf("% +Zoo"));
+	// ft_printf("ret = %d\n", ft_printf("%"));
+	// printf("ret = %d\n", printf("%"));
+	// ft_printf("ret = %d\n", ft_printf("%-5%"));
+	// printf("ret = %d\n", printf("%-5%"));
+	// ft_printf("ret = %d\n", ft_printf("%5%"));
+	// printf("ret = %d\n", printf("%5%"));
+	// ft_printf("ret = %d\n", ft_printf("%.0%"));
+	// printf("ret = %d\n", printf("%.0%"));
 
 	// ft_printf("ret = %d\n", ft_printf("@moulitest: %5.d %5.0d", 0, 0));
 	// printf("ret = %d\n", printf("@moulitest: %5.d %5.0d", 0, 0));
