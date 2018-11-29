@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 19:58:32 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/29 08:01:30 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/29 09:30:49 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct	s_pf_infos
 	int		width;
 	int		precision;
 	int		bkp;
+	char	**buf;
 }				t_pf_infos;
 
 int			ft_ending_format(t_pf_infos *inf, int size_of_var, int is_neg);
@@ -121,21 +122,22 @@ int			ft_put_pointer(va_list ap, t_pf_infos *inf);
 ** finding a pointer to the right function
 */
 
-int			ft_pf_dispatcher(const char **str, va_list args);
+int			ft_pf_dispatcher(const char **str, va_list args, t_pf_infos *inf);
 int			ft_flag_offset(char c, int current_offset);
 int			ft_pf_c_in_str(char c, char *str);
 int			ft_conversion_or_flag(char c);
 int			ft_conversion(char c);
 void		ft_pf_parse_attributes(t_pf_infos *inf, char conv);
 void		ft_pf_get_attributes(t_pf_infos *inf, const char *str);
-t_pf_infos	*ft_pf_initiate_attributes(void);
+void		ft_pf_initiate_attributes(t_pf_infos *inf);
 
 /*
 ** ==================== AUXILIARY FUNCTIONS ====================
 */
 
+int			ft_reflect(char c, t_pf_infos *inf);
 int			ft_w_buf(char **old, char *content, size_t len);
-int			ft_pf_pad(const char **str);
+int			ft_pf_pad(const char **str, t_pf_infos *inf);
 int			ft_magnitude(long long int nb, int base);
 int			ft_unsigned_magnitude(unsigned long long int nb, int base);
 

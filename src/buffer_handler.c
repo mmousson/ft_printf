@@ -6,13 +6,13 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 07:03:47 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/29 08:04:20 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/29 09:30:01 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_w_buf(char **old, char *content, size_t len)
+int		ft_w_buf(char **old, char *content, size_t len)
 {
 	int 	old_len;
 	char	*new;
@@ -27,16 +27,15 @@ int	ft_w_buf(char **old, char *content, size_t len)
 	return (len);
 }
 
-int	ft_pf_pad(const char **str)
+int		ft_pf_pad(const char **str, t_pf_infos *inf)
 {
 	int			i;
-	t_pf_infos	*inf;
 	const char	*s;
 	char		pad;
 
 	i = -1;
 	s = *str;
-	inf = ft_pf_initiate_attributes();
+	ft_pf_initiate_attributes(inf);
 	inf->bkp = ft_abs(ft_atoi(s + 1)) - 1;
 	while (*++s != '\0' && ft_pf_c_in_str(*s, "_ .+-#%lLh0123456789"))
 		ft_pf_get_attributes(inf, s);
@@ -51,4 +50,9 @@ int	ft_pf_pad(const char **str)
 	*str = s;
 	free(inf);
 	return (ft_max(0, inf->bkp) + 1);
+}
+
+int		ft_reflect(char c, t_pf_infos *inf)
+{
+	return (ft_w_buf(inf->buf, &c, 1));
 }

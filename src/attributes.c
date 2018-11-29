@@ -6,28 +6,23 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 01:25:57 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/29 05:39:43 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/29 08:58:44 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_pf_infos	*ft_pf_initiate_attributes(void)
+void		ft_pf_initiate_attributes(t_pf_infos *inf)
 {
-	t_pf_infos *ret;
-
-	if (!(ret = (t_pf_infos *)ft_memalloc(sizeof(t_pf_infos))))
-		return (NULL);
-	ret->space = -1;
-	ret->justify = -1;
-	ret->plus = -1;
-	ret->precision = -1;
-	ret->sharp = -1;
-	ret->width = -1;
-	ret->zero_pad = -1;
-	ret->is_x = -1;
-	ret->is_b_x = -1;
-	return (ret);
+	inf->space = -1;
+	inf->justify = -1;
+	inf->plus = -1;
+	inf->precision = -1;
+	inf->sharp = -1;
+	inf->width = -1;
+	inf->zero_pad = -1;
+	inf->is_x = -1;
+	inf->is_b_x = -1;
 }
 
 void		ft_pf_parse_attributes(t_pf_infos *inf, char conv)

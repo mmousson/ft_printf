@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 20:02:26 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/29 05:31:11 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/29 09:01:31 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,24 +87,22 @@ int	invalid(t_pf_infos *inf)
 	pad = (inf->zero_pad == 1) ? '0' : ' ';
 	rep = inf->width;
 	if (inf->justify == 1)
-		res += (int)write(1, "%", 1);
+		res += ft_w_buf(inf->buf, "%", 1);
 	while (rep-- > 1)
-		res += (int)write(1, &pad, 1);
+		res += ft_w_buf(inf->buf, &pad, 1);
 	if (inf->justify == -1)
-		res += (int)write(1, "%", 1);
+		res += ft_w_buf(inf->buf, "%", 1);
 	return (res);
 }
 
-int	ft_pf_dispatcher(const char **str, va_list args)
+int	ft_pf_dispatcher(const char **str, va_list args, t_pf_infos *inf)
 {
 	int			r;
-	t_pf_infos	*inf;
 	const char	*s;
 
 	r = 0;
 	s = (*str);
-	if (!(inf = ft_pf_initiate_attributes()))
-		return (0);
+	ft_pf_initiate_attributes(inf);
 	while (ft_isdigit(*++s) || *s == '#' || *s == '+' || *s == '-'
 				|| *s == '.' || *s == ' ')
 		ft_pf_get_attributes(inf, s);
@@ -119,7 +117,6 @@ int	ft_pf_dispatcher(const char **str, va_list args)
 		s++;
 	ft_pf_parse_attributes(inf, *(s - 1));
 	r = ((r <= 49 && (*g_func[r])) ? (*g_func[r])(args, inf) : invalid(inf));
-	free(inf);
 	*str = s;
 	return (r);
 }
