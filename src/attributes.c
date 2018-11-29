@@ -6,11 +6,10 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 01:25:57 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/27 08:14:17 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/29 05:39:43 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "ft_printf.h"
 
 t_pf_infos	*ft_pf_initiate_attributes(void)

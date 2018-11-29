@@ -6,20 +6,20 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 03:04:41 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/27 07:24:48 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/29 06:56:49 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "ft_printf.h"
 
-static int	ft_justify(t_pf_infos *inf)
+static int	ft_justify(int width, int already_written)
 {
 	int		res;
 
 	res = 0;
-	while ((inf->width)-- > 0)
-		res += (int)write(1, " ", 1);
+	while (already_written++ < width)
+			res += (int)write(1, " ", 1);
 	return (res);
 }
 
@@ -53,6 +53,8 @@ static int	ft_format(t_pf_infos *inf, int magnitude, int is_nul)
 	int		res;
 
 	res = 0;
+	if (inf->width > inf->precision && (inf->precision) > 0 && (inf->width) > 0)
+		(inf->width) += (magnitude < inf->precision);
 	if (inf->width > -1)
 		res += ft_handle_width(inf, magnitude, is_nul);
 	if (inf->space == 1)
@@ -75,12 +77,16 @@ static void	ft_put_it(unsigned long long int nb)
 int			ft_pf_putoctal_ulli_aux(unsigned long long int nb, t_pf_infos *inf)
 {
 	int res;
+	int mag;
+	int w;
 
+	w = inf->width;
+	mag = ft_unsigned_magnitude(nb, 8);
 	if (inf->precision > -1 && inf->sharp == 1)
 		(inf->precision)--;
 	inf->bkp = inf->precision;
-	res = (nb == 0 && inf->precision == 0) ? 0 : ft_unsigned_magnitude(nb, 8);
-	res += ft_format(inf, ft_unsigned_magnitude(nb, 8), nb == 0);
+	res = (nb == 0 && inf->precision == 0) ? 0 : mag;
+	res += ft_format(inf, mag, nb == 0);
 	if ((inf->bkp != 0 && nb == 0) || (nb != 0))
 	{
 		if (inf->sharp == 1 && nb != 0)
@@ -88,6 +94,6 @@ int			ft_pf_putoctal_ulli_aux(unsigned long long int nb, t_pf_infos *inf)
 		ft_put_it(nb);
 	}
 	if (inf->justify == 1)
-		res += ft_justify(inf);
+		res += ft_justify(w, res);
 	return (res);
 }

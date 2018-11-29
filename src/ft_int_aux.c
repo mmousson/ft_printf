@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 06:51:56 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/28 20:40:31 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/29 04:46:41 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,9 @@ static int	ft_format(t_pf_infos *inf, int magnitude, int is_neg, int is_nul)
 	int		res;
 
 	res = 0;
+	if (inf->width > inf->precision && (inf->precision) > 0 && (inf->width) > 0
+		&& magnitude > inf->precision && magnitude < inf->width && !is_neg)
+		(inf->width)--;
 	if (inf->width > -1)
 		res += ft_handle_width(inf, magnitude, is_neg, is_nul);
 	else if (is_neg && inf->zero_pad == 1)

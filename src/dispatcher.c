@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 20:02:26 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/28 21:28:25 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/29 05:31:11 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,17 +66,30 @@ int	(*g_func[50])(va_list ap, t_pf_infos *inf) = {
 	&ft_pf_put_lhexa_c
 };
 
+int	ft_no_conversions(const char *str, const char *s)
+{
+	while (*str && str <= s)
+	{
+		if (ft_pf_c_in_str(*str, "_cspdiouxXf"))
+			return (0);
+		str++;
+	}
+	return (1);
+}
+
 int	invalid(t_pf_infos *inf)
 {
-	int res;
-	int rep;
+	int		res;
+	int		rep;
+	char	pad;
 
 	res = 0;
-	rep = ft_max(inf->precision, inf->width);
+	pad = (inf->zero_pad == 1) ? '0' : ' ';
+	rep = inf->width;
 	if (inf->justify == 1)
 		res += (int)write(1, "%", 1);
 	while (rep-- > 1)
-		res += (int)write(1, " ", 1);
+		res += (int)write(1, &pad, 1);
 	if (inf->justify == -1)
 		res += (int)write(1, "%", 1);
 	return (res);
@@ -102,7 +115,7 @@ int	ft_pf_dispatcher(const char **str, va_list args)
 		r += ft_flag_offset(*s, r) + ft_pf_c_in_str(*s, "cdfiopsuxX");
 		s++;
 	}
-	if ((r = (**str == '%' && !ft_conversion_or_flag(*(*(str) + 1))) ? 100 : r) == 100)
+	if ((r = ft_no_conversions(*str, s) ? 100 : r) == 100)
 		s++;
 	ft_pf_parse_attributes(inf, *(s - 1));
 	r = ((r <= 49 && (*g_func[r])) ? (*g_func[r])(args, inf) : invalid(inf));

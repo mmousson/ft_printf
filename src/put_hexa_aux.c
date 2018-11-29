@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 20:43:49 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/27 07:35:53 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/29 06:29:24 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ static int	ft_format(t_pf_infos *inf, int magnitude, int is_nul)
 	int		res;
 
 	res = 0;
+	if (inf->width > inf->precision && (inf->precision) > 0 && (inf->width) > 0)
+		(inf->width) += (magnitude < inf->precision);
 	if (inf->width > -1)
 		res += ft_handle_width(inf, magnitude, is_nul);
 	if (inf->space == 1)
@@ -76,24 +78,28 @@ static void	ft_put_it(unsigned long long int nb, t_pf_infos *inf)
 int			ft_pf_put_hexa_aux(unsigned long long int nb, t_pf_infos *inf)
 {
 	int res;
-	int was_prec_zero;
+	int prec_zero;
 
-	was_prec_zero = (inf->precision == 0);
-	if (inf->precision > -1 && inf->sharp == 1)
-		(inf->precision)--;
+	prec_zero = (inf->precision == 0);
+	inf->precision -= (inf->precision > -1 && inf->sharp == 1);
 	inf->bkp = inf->precision;
-	res = (nb == 0 && was_prec_zero) ? 0 : ft_unsigned_magnitude(nb, 16);
-	if (inf->zero_pad == 1 && inf->sharp == 1 && !was_prec_zero)
+	res = (nb == 0 && prec_zero) ? 0 : ft_unsigned_magnitude(nb, 16);
+	if (inf->zero_pad == 1 && inf->sharp == 1 && inf->width == -1
+		&& ((nb == 0 && !prec_zero) || nb != 0))
+			res += (int)write(1, inf->is_x == 1 ? "0x" : "0X", 2);
+	else if (!prec_zero && nb != 0 && inf->width == -1 && inf->justify == -1
+		&& inf->sharp-- == 1 && inf->precision++)
+		res += (int)write(1, inf->is_x == 1 ? "0x" : "0X", 2);
+	else if (nb != 0 && inf->sharp == 1 && inf->zero_pad == 1 && inf->width > -1)
 		res += (int)write(1, inf->is_x == 1 ? "0x" : "0X", 2);
 	res += ft_format(inf, ft_unsigned_magnitude(nb, 16), nb == 0);
 	if ((inf->bkp != 0 && nb == 0) || (nb != 0))
 	{
 		if (inf->sharp == 1 && nb != 0 && inf->zero_pad == -1)
 			res += (int)write(1, inf->is_x == 1 ? "0x" : "0X", 2);
-		if (!(was_prec_zero && nb == 0))
+		if (!(prec_zero && nb == 0))
 			ft_put_it(nb, inf);
 	}
-	if (inf->justify == 1)
-		res += ft_justify(inf);
+	res += (inf->justify == 1) ? ft_justify(inf) : 0;
 	return (res);
 }

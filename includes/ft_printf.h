@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 19:58:32 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/28 20:29:25 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/29 04:50:48 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int			ft_pf_putusint(va_list ap, t_pf_infos *inf);
 int			ft_pf_putucint(va_list ap, t_pf_infos *inf);
 
 int			ft_pf_putllint_aux(long long int nb, t_pf_infos *inf);
-void		ft_pf_putullint_aux(unsigned long long int nb);
+int			ft_pf_putullint_aux(unsigned long long int nb, t_pf_infos *inf);
 
 /*
 ** ===================== OCTAL FORMATING =====================

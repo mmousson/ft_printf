@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+// /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   maintest.c                                         :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 10:02:11 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/28 21:29:03 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/29 05:00:36 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,39 @@ int	main(void)
 	char c = '7';
 	// ft_printf("ret = %d\n", ft_printf("111%s333%s555%saaa%sccc", "222", "444", "666", "bbb"));
 	// printf("ret = %d\n", printf("111%s333%s555%saaa%sccc", "222", "444", "666", "bbb"));
-	ft_printf("ret = %d\n", ft_printf("%p%%%i%o%u%x%X%c", &c, LONG_MAX, 42, 42, 100000, 42, 'c'));
-	printf("ret = %d\n", printf("%p%%%i%o%u%x%X%c", &c, LONG_MAX, 42, 42, 100000, 42, 'c'));
+	// ft_printf("ret = %d\n", ft_printf("{%10Z}"));
+	// printf("ret = %d\n", printf("{%10Z}"));
+	// ft_printf("ret = %d\n", ft_printf("% %"));
+	// printf("ret = %d\n", printf("% %"));
+	// ft_printf("ret = %d\n", ft_printf("%p%%%i%o%u%x%X%c", &c, LONG_MAX, 42, 42, 100000, 42, 'c'));
+	// printf("ret = %d\n", printf("%p%%%i%o%u%x%X%c", &c, LONG_MAX, 42, 42, 100000, 42, 'c'));
 	// ft_printf("ret = %d\n", ft_printf("{% 03d}", 0));
 	// printf("ret = %d\n", printf("{% 03d}", 0));
-	// ft_printf("ret = %d\n", ft_printf("% +Zoo"));
-	// printf("ret = %d\n", printf("% +Zoo"));
+	// ft_printf("ret = %d\n", ft_printf("% "));
+	// printf("ret = %d\n", printf("% "));
 	// ft_printf("ret = %d\n", ft_printf("%"));
 	// printf("ret = %d\n", printf("%"));
 	// ft_printf("ret = %d\n", ft_printf("%-5%"));
 	// printf("ret = %d\n", printf("%-5%"));
 	// ft_printf("ret = %d\n", ft_printf("%5%"));
 	// printf("ret = %d\n", printf("%5%"));
-	// ft_printf("ret = %d\n", ft_printf("%.0%"));
-	// printf("ret = %d\n", printf("%.0%"));
+	// ft_printf("ret = %d\n", ft_printf("%010+d", 42));
+	// printf("ret = %d\n", printf("%010+d", 42));
+	// ft_printf("ret = %d\n", ft_printf("%+%", 42));
+	// printf("ret = %d\n", printf("%+%", 42));
+	// ft_printf("ret = %d\n", ft_printf("{% -15Z}", 123));
+	// printf("ret = %d\n", printf("{% -15Z}", 123));
+	// ft_printf("ret = %d\n", ft_printf("% +Zoo"));
+	// printf("ret = %d\n", printf("% +Zoo"));
+	// ft_printf("ret = %d\n", ft_printf("% Zoo"));
+	// printf("ret = %d\n", printf("% Zoo"));
+	// ft_printf("ret = %d\n", ft_printf("%.3%"));
+	// printf("ret = %d\n", printf("%.3%"));
+	// ft_printf("ret = %d\n", ft_printf("%05.%"));
+	// printf("ret = %d\n", printf("%05.%"));
+	// ft_printf("ret = %d\n", ft_printf("%05.Z"));
+	// printf("ret = %d\n", printf("%05.Z"));
+
 
 	// ft_printf("ret = %d\n", ft_printf("@moulitest: %5.d %5.0d", 0, 0));
 	// printf("ret = %d\n", printf("@moulitest: %5.d %5.0d", 0, 0));
@@ -59,6 +78,18 @@ int	main(void)
 	// printf("ret = %d\n", printf("%s", "The string %s!"));
 	// ft_printf("ret = %d\n", ft_printf("%s", ""));
 	// printf("ret = %d\n", printf("%s", ""));
+	// ft_printf("ret = %d\n", ft_printf("%2.s", 0));
+	// printf("ret = %d\n", printf("%2.s", 0));
+	// ft_printf("ret = %d\n", ft_printf("%12.s", 0));
+	// printf("ret = %d\n", printf("%12.s", 0));
+	// ft_printf("ret = %d\n", ft_printf("%2.2s", 0));
+	// printf("ret = %d\n", printf("%2.2s", 0));
+	// ft_printf("ret = %d\n", ft_printf("%2.12s", 0));
+	// printf("ret = %d\n", printf("%2.12s", 0));
+	// ft_printf("ret = %d\n", ft_printf("%05.s", 0));
+	// printf("ret = %d\n", printf("%05.s", 0));
+	// ft_printf("ret = %d\n", ft_printf("{%.s}", 0));
+	// printf("ret = %d\n", printf("{%.s}", 0));
 
 	// ft_printf("ret = %d\n", ft_printf("%05c", '4'));
 	// printf("ret = %d\n", printf("%05c", '4'));
@@ -105,6 +136,10 @@ int	main(void)
 	// printf("ret = %d\n", printf("%p", -42));
 	// ft_printf("ret = %d\n", ft_printf("%p", 0));
 	// printf("ret = %d\n", printf("%p", 0));
+	// ft_printf("ret = %d\n", ft_printf("{%05p}", 0));
+	// printf("ret = %d\n", printf("{%05p}", 0));
+	// ft_printf("ret = %d\n", ft_printf("%.0p %.p", 0, 0));
+	// printf("ret = %d\n", printf("%.0p %.p", 0, 0));
 
 	// ft_printf("ret = %d\n", ft_printf("%5u%5u %.0u %.5u %05u", 4, 50, 0, LONG_MAX, 0));
 	// printf("ret = %d\n", printf("%5u%5u %.0u %.5u %05u", 4, 50, 0, LONG_MAX, 0));
@@ -162,6 +197,10 @@ int	main(void)
 	// printf("ret = %d\n", printf("%u", -42));
 	// ft_printf("ret = %d\n", ft_printf("%u", 0));
 	// printf("ret = %d\n", printf("%u", 0));
+	// ft_printf("ret = %d\n", ft_printf("%lu %lu", 0, ULONG_MAX));
+	// printf("ret = %d\n", printf("%lu %lu", 0, ULONG_MAX));
+	// ft_printf("ret = %d\n", ft_printf("%15.4u", 42));
+	// printf("ret = %d\n", printf("%15.4u", 42));
 
 	// ft_printf("ret = %d\n", ft_printf("%#08x", 42));
 	// printf("ret = %d\n", printf("%#08x", 42));
@@ -219,6 +258,18 @@ int	main(void)
 	// printf("ret = %d\n", printf("%x", -42));
 	// ft_printf("ret = %d\n", ft_printf("%x", 0));
 	// printf("ret = %d\n", printf("%x", 0));
+	// ft_printf("ret = %d\n", ft_printf("%15.4x", 424242));
+	// printf("ret = %d\n", printf("%15.4x", 424242));
+	// ft_printf("ret = %d\n", ft_printf("%15.4x", 42));
+	// printf("ret = %d\n", printf("%15.4x", 42));
+	// ft_printf("ret = %d\n", ft_printf("%#0.5x", 1));
+	// printf("ret = %d\n", printf("%#0.5x", 1));
+	// ft_printf("ret = %d\n", ft_printf("%#08x", 42));
+	// printf("ret = %d\n", printf("%#08x", 42));
+	// ft_printf("ret = %d\n", ft_printf("%#8x", 42));
+	// printf("ret = %d\n", printf("%#8x", 42));
+	// ft_printf("ret = %d\n", ft_printf("%#-08x", 42));
+	// printf("ret = %d\n", printf("%#-08x", 42));
 
 	// ft_printf("ret = %d\n", ft_printf("@moulitest: %#.o %#.0o", 0, 0));
 	// printf("ret = %d\n", printf("@moulitest: %#.o %#.0o", 0, 0));
@@ -284,7 +335,28 @@ int	main(void)
 	// printf("ret = %d\n", printf("%o", 42));
 	// ft_printf("ret = %d\n", ft_printf("%o", 0));
 	// printf("ret = %d\n", printf("%o", 0));
+	// ft_printf("ret = %d\n", ft_printf("%15.4o", 424242));
+	// printf("ret = %d\n", printf("%15.4o", 424242));
+	// ft_printf("ret = %d\n", ft_printf("%15.4o", 42));
+	// printf("ret = %d\n", printf("%15.4o", 42));
+	// ft_printf("ret = %d\n", ft_printf("%-5o", 2500));
+	// printf("ret = %d\n", printf("%-5o", 2500));
+	ft_printf("ret = %d\n", ft_printf("%-10.5o", 2500));
+	printf("ret = %d\n", printf("%-10.5o", 2500));
+	ft_printf("ret = %d\n", ft_printf("%-5.10o", 2500));
+	printf("ret = %d\n", printf("%-5.10o", 2500));
+	ft_printf("ret = %d\n", ft_printf("%-10.2o", 2500));
+	printf("ret = %d\n", printf("%-10.2o", 2500));
+	ft_printf("ret = %d\n", ft_printf("%-15.3ho", USHRT_MAX));
+	printf("ret = %d\n", printf("%-15.3ho", USHRT_MAX));
+	ft_printf("ret = %d\n", ft_printf("%-10.2o", 2500));
+	printf("ret = %d\n", printf("%-10.2o", 2500));
+	
 
+	// ft_printf("ret = %d\n", ft_printf("%15.4d", -424242));
+	// printf("ret = %d\n", printf("%15.4d", -424242));
+	// ft_printf("ret = %d\n", ft_printf("%15.4d", 424242));
+	// printf("ret = %d\n", printf("%15.4d", 424242));
 	// ft_printf("ret = %d\n", ft_printf("%0d", -42));
 	// printf("ret = %d\n", printf("%0d", -42));
 	// ft_printf("ret = %d\n", ft_printf("%00d", -42));
