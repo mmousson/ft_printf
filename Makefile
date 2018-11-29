@@ -6,7 +6,7 @@
 #    By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/22 09:54:12 by mmousson          #+#    #+#              #
-#    Updated: 2018/11/29 08:03:56 by mmousson         ###   ########.fr        #
+#    Updated: 2018/11/27 02:58:11 by mmousson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,8 +100,7 @@ SRCS =		./src/attributes.c \
 			./src/putstr.c \
 			./src/unsigned_int_aux.c \
 			./src/unsigned_int.c \
-			./src/magnitude.c \
-			./src/buffer_handler.c
+			./src/magnitude.c
 
 OBJS = $(notdir $(SRCS:.c=.o))
 OBJS_LIBFT = $(notdir $(SRC_LIBFT:.c=.o))

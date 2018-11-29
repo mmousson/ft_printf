@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 19:58:32 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/29 08:01:30 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/29 04:50:48 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct	s_pf_infos
 	int		width;
 	int		precision;
 	int		bkp;
+	
 }				t_pf_infos;
 
 int			ft_ending_format(t_pf_infos *inf, int size_of_var, int is_neg);
@@ -134,8 +135,6 @@ t_pf_infos	*ft_pf_initiate_attributes(void);
 ** ==================== AUXILIARY FUNCTIONS ====================
 */
 
-int			ft_w_buf(char **old, char *content, size_t len);
-int			ft_pf_pad(const char **str);
 int			ft_magnitude(long long int nb, int base);
 int			ft_unsigned_magnitude(unsigned long long int nb, int base);
 
