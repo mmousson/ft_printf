@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/17 14:16:23 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/29 05:39:54 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/29 08:13:26 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,51 +41,26 @@ static inline int	ft_check(const char *fmt)
 	return (0);
 }
 
-static int			ft_pf_putstr_aux(char *str, const char **format)
+static int			ft_pf_putstr_aux(char *str, const char **format,
+						char **buf)
 {
-	int ret;
+	int offset;
 
-	ret = ft_strlen(str);
-	write(1, str, ret);
+	offset = ft_strlen(str);
+	// write(1, str, offset);
+	ft_w_buf(buf, str, offset);
 	free(str);
-	(*format) += ret;
-	return (ret);
+	(*format) += offset;
+	return (offset);
 }
 
-int					ft_pf_pad(const char **str)
-{
-	int			i;
-	t_pf_infos	*inf;
-	const char	*s;
-	char		pad;
-
-	i = -1;
-	s = *str;
-	inf = ft_pf_initiate_attributes();
-	inf->bkp = ft_abs(ft_atoi(s + 1)) - 1;
-	while (*++s != '\0' && ft_pf_c_in_str(*s, "_ .+-#%lLh0123456789"))
-		ft_pf_get_attributes(inf, s);
-	inf->conversion = *s++;
-	pad = (inf->zero_pad == 1) ? '0' : ' ';
-	if (inf->justify == 1)
-		write(1, &(inf->conversion), 1);
-	while (++i < inf->bkp)
-		write(1, &pad, 1);
-	if (inf->justify == -1)
-		write(1, &(inf->conversion), 1);
-	*str = s;
-	free(inf);
-	return (ft_max(0, inf->bkp) + 1);
-}
-
-int					ft_printf(const char *format, ...)
+int					ft_printf_aux(const char *format, char *buf, va_list list)
 {
 	char	*f;
 	int		ret;
-	va_list	list;
 
 	ret = 0;
-	va_start(list, format);
+	UNUSED(list);
 	while (*format)
 	{
 		if (*format == '%')
@@ -100,8 +75,37 @@ int					ft_printf(const char *format, ...)
 		}
 		f = ft_strchr(format, '%');
 		ret += ft_pf_putstr_aux(ft_strsub(format, 0, f ? f - format
-					: (int)ft_strlen(format)), &format);
+					: (int)ft_strlen(format)), &format, &buf);
 	}
+	write(1, buf, ret);
+	free(buf);
+	return (ret);
+}
+
+int					ft_printf(const char *format, ...)
+{
+	// char	*f;
+	int		ret;
+	va_list	list;
+
+	va_start(list, format);
+	ret = ft_printf_aux(format, ft_strnew(0), list);
+	// while (*format)
+	// {
+	// 	if (*format == '%')
+	// 	{
+	// 		if (ft_check(format + 1))
+	// 			ret += ((*(format + 1) == '%') && (format += 2)
+	// 				? (int)write(1, "%", 1) : ft_pf_dispatcher(&format, list));
+	// 		else if (*(format + 1) == '\0')
+	// 			format++;
+	// 		else
+	// 			ret += ft_pf_pad(&format);
+	// 	}
+	// 	f = ft_strchr(format, '%');
+	// 	ret += ft_pf_putstr_aux(ft_strsub(format, 0, f ? f - format
+	// 				: (int)ft_strlen(format)), &format);
+	// }
 	va_end(list);
 	return (ret);
 }

@@ -17,6 +17,8 @@
 int	main(void)
 {
 	char c = '7';
+	ft_printf("Wololo\n");
+
 	// ft_printf("ret = %d\n", ft_printf("111%s333%s555%saaa%sccc", "222", "444", "666", "bbb"));
 	// printf("ret = %d\n", printf("111%s333%s555%saaa%sccc", "222", "444", "666", "bbb"));
 	// ft_printf("ret = %d\n", ft_printf("{%10Z}"));
@@ -341,17 +343,16 @@ int	main(void)
 	// printf("ret = %d\n", printf("%15.4o", 42));
 	// ft_printf("ret = %d\n", ft_printf("%-5o", 2500));
 	// printf("ret = %d\n", printf("%-5o", 2500));
-	ft_printf("ret = %d\n", ft_printf("%-10.5o", 2500));
-	printf("ret = %d\n", printf("%-10.5o", 2500));
-	ft_printf("ret = %d\n", ft_printf("%-5.10o", 2500));
-	printf("ret = %d\n", printf("%-5.10o", 2500));
-	ft_printf("ret = %d\n", ft_printf("%-10.2o", 2500));
-	printf("ret = %d\n", printf("%-10.2o", 2500));
-	ft_printf("ret = %d\n", ft_printf("%-15.3ho", USHRT_MAX));
-	printf("ret = %d\n", printf("%-15.3ho", USHRT_MAX));
-	ft_printf("ret = %d\n", ft_printf("%-10.2o", 2500));
-	printf("ret = %d\n", printf("%-10.2o", 2500));
-	
+	// ft_printf("ret = %d\n", ft_printf("%-10.5o", 2500));
+	// printf("ret = %d\n", printf("%-10.5o", 2500));
+	// ft_printf("ret = %d\n", ft_printf("%-5.10o", 2500));
+	// printf("ret = %d\n", printf("%-5.10o", 2500));
+	// ft_printf("ret = %d\n", ft_printf("%-10.2o", 2500));
+	// printf("ret = %d\n", printf("%-10.2o", 2500));
+	// ft_printf("ret = %d\n", ft_printf("%-15.3ho", USHRT_MAX));
+	// printf("ret = %d\n", printf("%-15.3ho", USHRT_MAX));
+	// ft_printf("ret = %d\n", ft_printf("%-10.2o", 2500));
+	// printf("ret = %d\n", printf("%-10.2o", 2500));
 
 	// ft_printf("ret = %d\n", ft_printf("%15.4d", -424242));
 	// printf("ret = %d\n", printf("%15.4d", -424242));
