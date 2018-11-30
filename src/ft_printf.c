@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/17 14:16:23 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/29 09:35:39 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/30 20:51:19 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static inline int	ft_check(const char *fmt)
 	return (0);
 }
 
-static int			ft_pf_putstr_aux(char *str, const char **format,
+static void			ft_pf_putstr_aux(char *str, const char **format,
 						t_pf_infos *inf)
 {
 	int offset;
@@ -50,35 +50,32 @@ static int			ft_pf_putstr_aux(char *str, const char **format,
 	ft_w_buf(inf->buf, str, offset);
 	free(str);
 	(*format) += offset;
-	return (offset);
 }
 
 int					ft_printf_aux(const char *format, va_list list,
 						t_pf_infos *inf)
 {
-	int		ret;
 	char	*f;
 
-	ret = 0;
 	while (*format)
 	{
 		if (*format == '%')
 		{
 			if (ft_check(format + 1))
-				ret += ((*(format + 1) == '%') && (format += 2)
+				(*(format + 1) == '%') && (format += 2)
 					? ft_w_buf(inf->buf, "%", 1)
-					: ft_pf_dispatcher(&format, list, inf));
+					: ft_pf_dispatcher(&format, list, inf);
 			else if (*(format + 1) == '\0')
 				format++;
 			else
-				ret += ft_pf_pad(&format, inf);
+				ft_pf_pad(&format, inf);
 		}
 		f = ft_strchr(format, '%');
-		ret += ft_pf_putstr_aux(ft_strsub(format, 0, f ? f - format
+		ft_pf_putstr_aux(ft_strsub(format, 0, f ? f - format
 					: (int)ft_strlen(format)), &format, inf);
 	}
-	write(1, *(inf->buf), ret);
-	return (ret);
+	write(1, *(inf->buf), ft_strlen(*inf->buf));
+	return (ft_strlen(*(inf->buf)));
 }
 
 int					ft_printf(const char *format, ...)
@@ -88,8 +85,13 @@ int					ft_printf(const char *format, ...)
 	t_pf_infos	*inf;
 
 	va_start(list, format);
-	inf = (t_pf_infos *)ft_memalloc(sizeof(t_pf_infos));
-	inf->buf = (char **)ft_memalloc(sizeof(char *));
+	if ((inf = (t_pf_infos *)ft_memalloc(sizeof(t_pf_infos))) == NULL)
+		return (0);
+	if ((inf->buf = (char **)ft_memalloc(sizeof(char *))) == NULL)
+	{
+		free(inf);
+		return (0);
+	}
 	*(inf->buf) = ft_strnew(0);
 	ret = ft_printf_aux(format, list, inf);
 	free(*(inf->buf));

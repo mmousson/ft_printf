@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 06:51:56 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/29 09:30:40 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/30 20:48:34 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static int	ft_justify(t_pf_infos *inf, int is_neg)
 	res = 0;
 	while ((inf->width)-- > 0 + is_neg)
 		res += ft_w_buf(inf->buf, " ", 1);
-		// res += (int)write(1, " ", 1);
 	return (res);
 }
 
@@ -33,7 +32,6 @@ static int	ft_handle_width(t_pf_infos *inf, int magnitude,
 	pad = inf->zero_pad == 1 ? '0' : ' ';
 	if (is_neg && inf->zero_pad == 1)
 		ft_w_buf(inf->buf, "-", 1);
-		// write(1, "-", 1);
 	inf->width -= (inf->plus == 1 || inf->space == 1);
 	if (inf->precision > -1)
 		magnitude = ft_max(inf->precision + 1, magnitude) + is_neg;
@@ -44,11 +42,9 @@ static int	ft_handle_width(t_pf_infos *inf, int magnitude,
 		if (inf->zero_pad == 1 && ((inf->plus == 1 && !is_neg)
 				|| inf->space == 1))
 			res += ft_w_buf(inf->buf, inf->plus == 1 ? "+" : " ", 1);
-			// res += (int)write(1, inf->plus == 1 ? "+" : " ", 1);
 		while ((inf->width)-- - magnitude > 0 - (inf->precision > 0
 					|| (inf->precision == 0 && is_nul)))
 			res += ft_w_buf(inf->buf, &pad, 1);
-			// res += (int)write(1, &pad, 1);
 	}
 	else if (inf->precision == -1)
 		inf->width -= magnitude - is_neg;
@@ -67,20 +63,15 @@ static int	ft_format(t_pf_infos *inf, int magnitude, int is_neg, int is_nul)
 		res += ft_handle_width(inf, magnitude, is_neg, is_nul);
 	else if (is_neg && inf->zero_pad == 1)
 		ft_w_buf(inf->buf, "-", 1);
-		// write(1, "-", 1);
 	if (inf->space == 1 && !is_neg && inf->zero_pad == -1)
 		res += ft_w_buf(inf->buf, " ", 1);
-		// res += (int)write(1, " ", 1);
 	if (is_neg && inf->zero_pad == -1)
 		ft_w_buf(inf->buf, "-", 1);
-		// write(1, "-", 1);
 	else if (inf->plus == 1 && inf->zero_pad == -1 && !is_neg)
 		res += ft_w_buf(inf->buf, "+", 1);
-		// res += (int)write(1, "+", 1);
 	if (inf->precision > 0)
 		while ((inf->precision)-- - magnitude > 0 - is_neg)
 			res += ft_w_buf(inf->buf, "0", 1);
-			// res += (int)write(1, "0", 1);
 	return (res);
 }
 
@@ -90,7 +81,6 @@ static void	ft_put_it(long long nb, t_pf_infos *inf)
 	{
 		if (nb == (-9223372036854775807 - 1))
 		{
-			// write(1, "9223372036854775808", 19);
 			ft_w_buf(inf->buf, "9223372036854775808", 19);
 			return ;
 		}
@@ -99,7 +89,6 @@ static void	ft_put_it(long long nb, t_pf_infos *inf)
 	}
 	if (nb >= 10)
 		ft_put_it(nb / 10, inf);
-	// ft_putchar('0' + nb % 10);
 	ft_reflect('0' + nb % 10, inf);
 }
 

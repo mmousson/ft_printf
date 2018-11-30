@@ -17,12 +17,17 @@
 int	main(void)
 {
 	char c = '7';
-	ft_printf("ret = %d\n", ft_printf("Wololo!"));
-	ft_printf("ret = %d\n", ft_printf("% %"));
-	ft_printf("ret = %d\n", ft_printf("%-5%"));
-	ft_printf("ret = %d\n", ft_printf("%5%"));
-	ft_printf("ret = %d\n", ft_printf("%5%"));
-	ft_printf("ret = %d\n", ft_printf("%d", 42));
+	// ft_printf("ret = %d\n", ft_printf("Wololo!"));
+	// ft_printf("ret = %d\n", ft_printf("% %"));
+	// ft_printf("ret = %d\n", ft_printf("%-5%"));
+	// ft_printf("ret = %d\n", ft_printf("%5%"));
+	// ft_printf("ret = %d\n", ft_printf("%5%"));
+	// ft_printf("ret = %d\n", ft_printf("%d", 42));
+	// ft_printf("ret = %d\n", ft_printf("%o", -42));
+	// ft_printf("ret = %d\n", ft_printf("%o", 42));
+	// ft_printf("ret = %d\n", ft_printf("%o", 0));
+	// ft_printf("null %c and text", 0);
+
 
 	// ft_printf("ret = %d\n", ft_printf("111%s333%s555%saaa%sccc", "222", "444", "666", "bbb"));
 	// printf("ret = %d\n", printf("111%s333%s555%saaa%sccc", "222", "444", "666", "bbb"));
@@ -378,8 +383,8 @@ int	main(void)
 	// printf("ret = %d\n", printf("%03.2d", -12));
 	// ft_printf("ret = %d\n", ft_printf("%+-10.5d", 4242));
 	// printf("ret = %d\n", printf("%+-10.5d", 4242));
-	// ft_printf("ret = %d\n", ft_printf("%-035.22d", -12));
-	// printf("ret = %d\n", printf("%-035.22d", -12));
+	ft_printf("ret = %d\n", ft_printf("%-035.22d", -12));
+	printf("ret = %d\n", printf("%-035.22d", -12));
 	// ft_printf("ret = %d\n", ft_printf("%+-042d", -481));
 	// printf("ret = %d\n", printf("%+-042d", -481));
 	// ft_printf("ret = %d\n", ft_printf("%-042d", -481));
