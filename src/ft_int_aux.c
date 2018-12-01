@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 06:51:56 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/29 04:46:41 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/30 21:45:19 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ static int	ft_handle_width(t_pf_infos *inf, int magnitude,
 	char	pad;
 
 	res = 0;
-	pad = inf->zero_pad == 1 ? '0' : ' ';
-	if (is_neg && inf->zero_pad == 1)
+	pad = inf->zero == 1 ? '0' : ' ';
+	if (is_neg && inf->zero == 1)
 		write(1, "-", 1);
 	inf->width -= (inf->plus == 1 || inf->space == 1);
 	if (inf->precision > -1)
@@ -39,7 +39,7 @@ static int	ft_handle_width(t_pf_infos *inf, int magnitude,
 						? inf->precision : 0;
 	if (inf->justify == -1)
 	{
-		if (inf->zero_pad == 1 && ((inf->plus == 1 && !is_neg)
+		if (inf->zero == 1 && ((inf->plus == 1 && !is_neg)
 				|| inf->space == 1))
 			res += (int)write(1, inf->plus == 1 ? "+" : " ", 1);
 		while ((inf->width)-- - magnitude > 0 - (inf->precision > 0
@@ -61,13 +61,13 @@ static int	ft_format(t_pf_infos *inf, int magnitude, int is_neg, int is_nul)
 		(inf->width)--;
 	if (inf->width > -1)
 		res += ft_handle_width(inf, magnitude, is_neg, is_nul);
-	else if (is_neg && inf->zero_pad == 1)
+	else if (is_neg && inf->zero == 1)
 		write(1, "-", 1);
-	if (inf->space == 1 && !is_neg && inf->zero_pad == -1)
+	if (inf->space == 1 && !is_neg && inf->zero == -1)
 		res += (int)write(1, " ", 1);
-	if (is_neg && inf->zero_pad == -1)
+	if (is_neg && inf->zero == -1)
 		write(1, "-", 1);
-	else if (inf->plus == 1 && inf->zero_pad == -1 && !is_neg)
+	else if (inf->plus == 1 && inf->zero == -1 && !is_neg)
 		res += (int)write(1, "+", 1);
 	if (inf->precision > 0)
 		while ((inf->precision)-- - magnitude > 0 - is_neg)

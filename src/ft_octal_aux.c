@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 03:04:41 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/29 06:56:49 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/30 21:46:15 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	ft_justify(int width, int already_written)
 
 	res = 0;
 	while (already_written++ < width)
-			res += (int)write(1, " ", 1);
+		res += (int)write(1, " ", 1);
 	return (res);
 }
 
@@ -29,7 +29,7 @@ static int	ft_handle_width(t_pf_infos *inf, int magnitude, int is_nul)
 	char	pad;
 
 	res = 0;
-	pad = inf->zero_pad == 1 ? '0' : ' ';
+	pad = inf->zero == 1 ? '0' : ' ';
 	inf->width -= (inf->space == 1) + (inf->sharp == 1) * !is_nul;
 	if (inf->precision > -1 && inf->precision > magnitude)
 		magnitude = ft_max(inf->precision + 1, magnitude);
@@ -37,7 +37,7 @@ static int	ft_handle_width(t_pf_infos *inf, int magnitude, int is_nul)
 						? inf->precision : 0;
 	if (inf->justify == -1)
 	{
-		if (inf->zero_pad == 1 && ((inf->plus == 1) || inf->space == 1))
+		if (inf->zero == 1 && ((inf->plus == 1) || inf->space == 1))
 			res += (int)write(1, inf->plus == 1 ? "+" : " ", 1);
 		while ((inf->width)-- - magnitude > 0 - (inf->precision > magnitude
 					|| (inf->precision == 0 && is_nul)))
@@ -59,7 +59,7 @@ static int	ft_format(t_pf_infos *inf, int magnitude, int is_nul)
 		res += ft_handle_width(inf, magnitude, is_nul);
 	if (inf->space == 1)
 		res += (int)write(1, " ", 1);
-	else if (inf->plus == 1 && inf->zero_pad == -1)
+	else if (inf->plus == 1 && inf->zero == -1)
 		res += (int)write(1, "+", 1);
 	if (inf->precision > 0)
 		while ((inf->precision)-- - magnitude > 0)

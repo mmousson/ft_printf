@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 02:04:27 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/27 08:17:00 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/30 23:53:29 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,9 @@ int			ft_float_pad(long double f, t_pf_infos *inf, int res_len,
 	char	padder;
 
 	bkp = 0;
-	if (inf->justify == 2 || inf->zero_pad == 1)
+	if (inf->justify == 2 || inf->zero == 1)
 	{
-		padder = (inf->zero_pad-- == 1) ? '0' : ' ';
+		padder = (inf->zero-- == 1) ? '0' : ' ';
 		if (f < 1.0L)
 			reps = (inf->width) - (inf->bkp + 2)
 						- (inf->space == 1 && f > 0.0L);
@@ -110,5 +110,5 @@ int			ft_float_pad(long double f, t_pf_infos *inf, int res_len,
 	else if (inf->plus-- == 1 && f > 0.0L)
 		bkp = (int)write(1, "+", 1);
 	inf->justify++;
-	return (bkp);
+	return (ft_max(0, bkp));
 }

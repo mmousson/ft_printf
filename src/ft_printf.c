@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/17 14:16:23 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/29 05:39:54 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/30 21:44:12 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int					ft_pf_pad(const char **str)
 	while (*++s != '\0' && ft_pf_c_in_str(*s, "_ .+-#%lLh0123456789"))
 		ft_pf_get_attributes(inf, s);
 	inf->conversion = *s++;
-	pad = (inf->zero_pad == 1) ? '0' : ' ';
+	pad = (inf->zero == 1) ? '0' : ' ';
 	if (inf->justify == 1)
 		write(1, &(inf->conversion), 1);
 	while (++i < inf->bkp)

@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 20:02:26 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/29 05:31:11 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/12/01 00:52:26 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	invalid(t_pf_infos *inf)
 	char	pad;
 
 	res = 0;
-	pad = (inf->zero_pad == 1) ? '0' : ' ';
+	pad = (inf->zero   == 1) ? '0' : ' ';
 	rep = inf->width;
 	if (inf->justify == 1)
 		res += (int)write(1, "%", 1);

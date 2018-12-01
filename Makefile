@@ -6,7 +6,7 @@
 #    By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/22 09:54:12 by mmousson          #+#    #+#              #
-#    Updated: 2018/11/27 02:58:11 by mmousson         ###   ########.fr        #
+#    Updated: 2018/11/30 21:48:32 by mmousson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,7 +84,6 @@ SRC_LIBFT =	./libft/ft_memset.c \
 SRCS =		./src/attributes.c \
 			./src/dispatcher.c \
 			./src/flags_conversions.c \
-			./src/format_output.c \
 			./src/ft_int_aux.c \
 			./src/ft_int.c \
 			./src/ft_octal.c \
