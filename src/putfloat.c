@@ -6,10 +6,11 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 01:04:16 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/29 02:22:51 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/30 23:56:20 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "ft_printf.h"
 
 static unsigned long long int	*ft_parse_float_bits(const void *float_mem)
@@ -72,15 +73,18 @@ static char						*ft_calculate_exp(int exp_data)
 }
 
 int								ft_print_result(long double f, char *result,
-									t_pf_infos *inf, int res_len, int man_len)
+									t_pf_infos *inf, int man_len)
 {
 	int ret;
+	int res_len;
 
 	ret = 0;
+	res_len = ft_strlen(result);
 	inf->bkp = inf->precision;
 	ret += ft_float_pad(f, inf, res_len, man_len);
 	ret += ft_pf_putfloat_show(result, res_len, man_len, inf);
-	ret += ft_float_pad(f, inf, res_len, man_len);
+	if (inf->justify >= 1)
+		ret += ft_float_pad(f, inf, res_len, man_len);
 	return (ret);
 }
 
@@ -100,13 +104,12 @@ int								ft_pf_putfloat(long double f, t_pf_infos *inf)
 		exponent = ft_calculate_exp((int)data[1]);
 		mantissa = ft_calculate_mantissa(data[2], (int)data[1]);
 		result = ft_strmultiply(exponent, mantissa, 1);
-		ret = ft_print_result(f, result, inf, ft_strlen(result),
-					ft_strlen(mantissa)) + data[0];
+		ret = ft_print_result(f, result, inf, ft_strlen(mantissa)) + data[0];
 		free(exponent);
 		free(mantissa);
 		free(result);
 	}
 	else
-		ret = ft_print_result(f, "0", inf, 1, 1);
+		ret = ft_print_result(f, "0", inf, 1);
 	return (ret);
 }

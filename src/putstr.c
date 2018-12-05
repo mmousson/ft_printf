@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/21 19:39:25 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/29 23:59:07 by mmousson         ###   ########.fr       */
+/*   Created: 2018/12/05 17:29:03 by mmousson          #+#    #+#             */
+/*   Updated: 2018/12/05 17:29:05 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	ft_format(t_pf_infos *inf, int length)
 	res = 0;
 	if (inf->justify == -1)
 	{
-		padder = inf->zero_pad == 1 ? '0' : ' ';
+		padder = inf->zero == 1 ? '0' : ' ';
 		while ((inf->width)-- - length > 0)
 			res += (int)write(1, &padder, 1);
 	}
@@ -41,7 +41,7 @@ static int	ft_nulstr(t_pf_infos *inf)
 	if (inf->precision == -1 && inf->width == -1)
 		return ((int)write(1, "(null)", 6));
 	ret = 0;
-	pad = inf->zero_pad == 1 ? '0' : ' ';
+	pad = inf->zero == 1 ? '0' : ' ';
 	while ((inf->width)-- > (inf->precision))
 		ret += (int)write(1, &pad, 1);
 	ret += (int)write(1, "(null)", ft_min(inf->precision, 6));

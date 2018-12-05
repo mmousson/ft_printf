@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 08:17:20 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/29 05:18:34 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/11/30 21:43:39 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ static int	ft_format_pointer(t_pf_infos *inf, int magnitude)
 		while ((inf->precision)-- - magnitude > -2)
 			res += (int)write(1, "0", 1);
 	}
-	if (inf->width > -1 && inf->justify == -1 && inf->zero_pad == -1)
+	if (inf->width > -1 && inf->justify == -1 && inf->zero == -1)
 	{
 		while ((inf->width)-- - magnitude > 0)
 			res += (int)write(1, " ", 1);
 	}
-	if (inf->zero_pad == 1 && inf->bkp == -10)
+	if (inf->zero == 1 && inf->bkp == -10)
 	{
 		while ((inf->width)-- - magnitude > 0)
 			res += (int)write(1, "0", 1);

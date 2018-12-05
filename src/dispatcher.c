@@ -5,12 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/19 20:02:26 by mmousson          #+#    #+#             */
-/*   Updated: 2018/12/05 17:15:33 by mmousson         ###   ########.fr       */
+/*   Created: 2018/12/05 17:26:07 by mmousson          #+#    #+#             */
+/*   Updated: 2018/12/05 17:27:27 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "ft_printf.h"
 
 int	(*g_func[50])(va_list ap, t_pf_infos *inf) = {
@@ -84,7 +83,7 @@ int	invalid(t_pf_infos *inf)
 	char	pad;
 
 	res = 0;
-	pad = (inf->zero_pad == 1) ? '0' : ' ';
+	pad = (inf->zero   == 1) ? '0' : ' ';
 	rep = inf->width;
 	if (inf->justify == 1)
 		res += (int)write(1, "%", 1);
@@ -107,7 +106,7 @@ int	ft_pf_dispatcher(const char **str, va_list args)
 		return (0);
 	while (ft_isdigit(*++s) || *s == '#' || *s == '+' || *s == '-'
 				|| *s == '.' || *s == ' ' || *s == '*')
-		ft_pf_get_attributes(inf, s, args);
+		ft_pf_get_attributes(inf, s);
 	while (ft_conversion_or_flag(*s) && r % 10 == 0)
 	{
 		inf->is_x = (*s == 'x') ? 1 : inf->is_x;

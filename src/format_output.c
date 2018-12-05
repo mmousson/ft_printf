@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 03:28:09 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/27 08:15:31 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/12/05 17:27:47 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int			ft_pf_format_output(t_pf_infos *inf, int size_of_var, int is_neg)
 	{
 		if (inf->width > 0 && inf->sharp == 1 && (inf->width < size_of_var))
 			res += ft_format_sharp(inf, size_of_var);
-		if (inf->zero_pad == 1 && inf->justify == -1)
+		if (inf->zero == 1 && inf->justify == -1)
 			while (((inf->width)-- - size_of_var - (inf->plus == 1 || is_neg) * (1 + ((inf->is_x == 1) || (inf->is_b_x == 1)) && size_of_var)) > (inf->sharp != -1) ? 1 : 0)
 				res += (int)write(1, inf->precision == 0 ? " " : "0", 1);
 		else if (inf->justify == -1)

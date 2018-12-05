@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/20 01:25:57 by mmousson          #+#    #+#             */
-/*   Updated: 2018/12/05 17:18:45 by mmousson         ###   ########.fr       */
+/*   Created: 2018/12/05 17:27:03 by mmousson          #+#    #+#             */
+/*   Updated: 2018/12/05 17:27:06 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_pf_infos	*ft_pf_initiate_attributes(void)
 	ret->precision = -1;
 	ret->sharp = -1;
 	ret->width = -1;
-	ret->zero_pad = -1;
+	ret->zero = -1;
 	ret->is_x = -1;
 	ret->is_b_x = -1;
 	return (ret);
@@ -33,16 +33,16 @@ t_pf_infos	*ft_pf_initiate_attributes(void)
 void		ft_pf_parse_attributes(t_pf_infos *inf, char conv)
 {
 	inf->conversion = conv;
-	if (inf->zero_pad > 0)
+	if (inf->zero > 0)
 	{
 		if (inf->precision > -1 && ft_pf_c_in_str(inf->conversion, "_diouxX"))
-			inf->zero_pad = -1;
+			inf->zero = -1;
 		if (inf->justify == 1)
-			inf->zero_pad = -1;
+			inf->zero = -1;
 	}
 	if (inf->precision == -1)
 		inf->precision = inf->conversion == 'f' ? 6 : -1;
-	if (inf->plus == 1 && !ft_pf_c_in_str(inf->conversion, "_di"))
+	if (inf->plus == 1 && !ft_pf_c_in_str(inf->conversion, "_fdi"))
 		inf->plus = -1;
 	if (inf->plus == 1 && inf->space == 1)
 		inf->space = -1;
@@ -53,8 +53,8 @@ void		ft_pf_parse_attributes(t_pf_infos *inf, char conv)
 void		ft_pf_get_attributes(t_pf_infos *inf, const char *str)
 {
 	inf->justify = (*str == '-') ? 1 : inf->justify;
-	inf->zero_pad = (*str == '0' && inf->precision == -1
-						&& inf->width == -1) ? 1 : inf->zero_pad;
+	inf->zero = (*str == '0' && inf->precision == -1
+						&& inf->width == -1) ? 1 : inf->zero;
 	inf->sharp = (*str == '#') ? 1 : inf->sharp;
 	inf->plus = (*str == '+') ? 1 : inf->plus;
 	inf->space = (*str == ' ') ? 1 : inf->space;
