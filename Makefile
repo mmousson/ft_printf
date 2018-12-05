@@ -6,11 +6,13 @@
 #    By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/22 09:54:12 by mmousson          #+#    #+#              #
-#    Updated: 2018/11/27 02:58:11 by mmousson         ###   ########.fr        #
+#    Updated: 2018/12/05 17:05:21 by mallo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+CC = gcc
 NAME = libftprintf.a
+CFLAGS = -Wextra -Wall -Werror -I./includes -I./libft
 
 SRC_LIBFT =	./libft/ft_memset.c \
 			./libft/ft_bzero.c \
@@ -102,15 +104,12 @@ SRCS =		./src/attributes.c \
 			./src/unsigned_int.c \
 			./src/magnitude.c
 
-OBJS = $(notdir $(SRCS:.c=.o))
-OBJS_LIBFT = $(notdir $(SRC_LIBFT:.c=.o))
-
-FLAG = -Wextra -Wall -Werror -I./includes -I./libft
+OBJS = $(SRCS:.c=.o)
+OBJS_LIBFT = $(SRC_LIBFT:.c=.o)
 
 all : $(NAME)
 
-$(NAME) : $(SRCS) $(SRC_LIBFT)
-	gcc -c $(FLAG) $(SRCS) $(SRC_LIBFT)
+$(NAME) : $(OBJS) $(OBJS_LIBFT)
 	ar rc $(NAME) $(OBJS) $(OBJS_LIBFT)
 	ranlib $(NAME)
 

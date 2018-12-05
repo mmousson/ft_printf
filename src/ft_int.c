@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 06:49:35 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/27 04:57:28 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/12/05 17:21:06 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int		ft_pf_putint(va_list ap, t_pf_infos *inf)
 	int	nb;
 
 	nb = va_arg(ap, int);
+	if (inf->width == -42)
+		inf->width = va_arg(ap, int);
 	res = ft_pf_putllint_aux((long long int)nb, inf);
 	return (res);
 }
@@ -29,6 +31,8 @@ int		ft_pf_putlint(va_list ap, t_pf_infos *inf)
 	long int	nb;
 
 	nb = va_arg(ap, long int);
+	if (inf->width == -42)
+		inf->width = va_arg(ap, int);
 	res = ft_pf_putllint_aux((long long int)nb, inf);
 	return (res);
 }
@@ -39,6 +43,8 @@ int		ft_pf_putllint(va_list ap, t_pf_infos *inf)
 	long long int	nb;
 
 	nb = va_arg(ap, long long int);
+	if (inf->width == -42)
+		inf->width = va_arg(ap, int);
 	res = ft_pf_putllint_aux(nb, inf);
 	return (res);
 }
@@ -49,6 +55,8 @@ int		ft_pf_putsint(va_list ap, t_pf_infos *inf)
 	short int	nb;
 
 	nb = (short int)(va_arg(ap, int));
+	if (inf->width == -42)
+		inf->width = va_arg(ap, int);
 	res = ft_pf_putllint_aux((long long int)nb, inf);
 	return (res);
 }
@@ -59,6 +67,8 @@ int		ft_pf_putcint(va_list ap, t_pf_infos *inf)
 	char	nb;
 
 	nb = (char)va_arg(ap, int);
+	if (inf->width == -42)
+		inf->width = va_arg(ap, int);
 	res = ft_pf_putllint_aux((long long int)nb, inf);
 	return (res);
 }

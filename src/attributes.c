@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 01:25:57 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/29 05:39:43 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/12/05 17:18:45 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,6 @@ void		ft_pf_get_attributes(t_pf_infos *inf, const char *str)
 	if (ft_isdigit(*str) && *str != '0' && inf->precision == -1
 			&& inf->width == -1)
 		inf->width = ft_atoi(str);
+	if (*str == '*')
+		inf->width = -42;
 }

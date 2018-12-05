@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/17 14:16:23 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/29 05:39:54 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/12/05 17:21:24 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,12 @@ static inline int	ft_has_percent(const char *fmt)
 
 static inline int	ft_check(const char *fmt)
 {
-	int			check;
-
 	if (ft_has_percent(fmt))
 		return (1);
-	check = 0;
 	while (*fmt != '\0')
 		if (ft_pf_c_in_str(*fmt, "_cspdiouxXf"))
 			return (1);
-		else if (ft_pf_c_in_str(*fmt, "_ .+-#%lLh0123456789"))
+		else if (ft_pf_c_in_str(*fmt, "_ *.+-#%lLh0123456789"))
 			fmt++;
 		else
 			return (0);

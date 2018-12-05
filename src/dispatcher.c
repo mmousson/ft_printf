@@ -6,7 +6,7 @@
 /*   By: mmousson <mmousson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 20:02:26 by mmousson          #+#    #+#             */
-/*   Updated: 2018/11/29 05:31:11 by mmousson         ###   ########.fr       */
+/*   Updated: 2018/12/05 17:15:33 by mmousson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,8 @@ int	ft_pf_dispatcher(const char **str, va_list args)
 	if (!(inf = ft_pf_initiate_attributes()))
 		return (0);
 	while (ft_isdigit(*++s) || *s == '#' || *s == '+' || *s == '-'
-				|| *s == '.' || *s == ' ')
-		ft_pf_get_attributes(inf, s);
+				|| *s == '.' || *s == ' ' || *s == '*')
+		ft_pf_get_attributes(inf, s, args);
 	while (ft_conversion_or_flag(*s) && r % 10 == 0)
 	{
 		inf->is_x = (*s == 'x') ? 1 : inf->is_x;
