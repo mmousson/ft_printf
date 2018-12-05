@@ -17,11 +17,18 @@
 int	main(int argc, char **argv)
 {
 	int width;
-	char c = '7';
+	int precision;
+	// char c = '7';
 	if (argc == 1)
 		width = 0;
 	else
+	{
 		width = ft_atoi(argv[1]);
+		precision = ft_atoi(argv[2]);
+	}
+	
+	ft_printf("ret = %d\n", ft_printf("%*.*d\n", width, precision, 42));
+	printf("ret = %d\n", printf("%*.*d\n", width, precision, 42));
 	// ft_printf("ret = %d\n", ft_printf("%+.5f", 55.0f));
 	// printf("ret = %d\n", printf("%+.5f", 55.0f));
 	// ft_printf("ret = %d\n", ft_printf("%+.0f", 0.0f));
@@ -36,7 +43,6 @@ int	main(int argc, char **argv)
 	// printf("ret = %d\n", printf("%35.22f", -1.0f));
 	// ft_printf("ret = %d\n", ft_printf("%03.22f", -1.0f));
 	// printf("ret = %d\n", printf("%03.22f", -1.0f));
-	ft_printf("%*d\n", 42, width);
 
 	// ft_printf("ret = %d\n", ft_printf("111%s333%s555%saaa%sccc", "222", "444", "666", "bbb"));
 	// printf("ret = %d\n", printf("111%s333%s555%saaa%sccc", "222", "444", "666", "bbb"));
